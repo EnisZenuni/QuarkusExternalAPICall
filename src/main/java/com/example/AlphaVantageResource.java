@@ -1,6 +1,7 @@
 package com.example;
 
 import com.example.model.StockDataResponse;
+import io.smallrye.mutiny.Uni;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
@@ -16,7 +17,7 @@ public interface AlphaVantageResource {
     @GET
     @Path("/query")
     @Produces(MediaType.APPLICATION_JSON)
-    StockDataResponse getData(
+    Uni<String> getData(
             @QueryParam("function") String function,
             @QueryParam("symbol") String symbol,
             @QueryParam("interval") String interval,
